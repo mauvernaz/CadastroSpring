@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exercício Bootstrap-JS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-light bg-light border-bottom mb-4">
+    <div class="container-fluid">
+        <span class="navbar-brand">Título</span>
+        <div>
+            <a class="btn btn-link" href="#">Cadastrar Pessoa</a>
+            <a class="btn btn-link" href="#">Cadastrar Projeto</a>
+            <a class="btn btn-link" href="#">Sair</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <form id="formCadastro" class="w-50 mx-auto">
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome:</label>
+            <input type="text" class="form-control" id="nome" name="nome" required maxlength="250">
+        </div>
+
+        <div class="mb-3">
+            <label for="idade" class="form-label">Idade: (min 17 max 100)</label>
+            <input type="number" class="form-control" id="idade" name="idade" required min="17" max="100">
+        </div>
+
+        <div class="mb-3">
+            <label for="dataInicio" class="form-label">Data Início Curso: (dd/mm/yyyy)</label>
+            <input type="date" class="form-control" id="dataInicio" name="dataInicio" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

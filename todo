@@ -1,0 +1,4 @@
+inversao de controle: spring é um grande map de beans, ele resolve o problema de ordem de dependencias
+não usar metodos static
+controller é burro, delega tudo (service, repository)
+xml papapa

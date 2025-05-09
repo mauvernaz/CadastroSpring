@@ -11,15 +11,15 @@
     <div class="container-fluid">
         <span class="navbar-brand">Título</span>
         <div>
-            <a class="btn btn-link" href="#">Cadastrar Pessoa</a>
-            <a class="btn btn-link" href="#">Cadastrar Projeto</a>
-            <a class="btn btn-link" href="#">Sair</a>
+            <a class="btn btn-link" href="/usuario">Cadastrar Pessoa</a>
+            <a class="btn btn-link" href="/projeto">Cadastrar Projeto</a>
+            <a class="btn btn-link" href="/script.js">Sair</a>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <form id="formCadastro" class="w-50 mx-auto">
+    <form id="formCadastro" class="w-50 mx-auto" action="/cadastro/enviar" method="post">
         <div class="mb-3">
             <label for="nome" class="form-label">Nome:</label>
             <input type="text" class="form-control" id="nome" name="nome" required maxlength="250">
@@ -38,7 +38,5 @@
         <button type="submit" class="btn btn-primary">Cadastrar</button>
     </form>
 </div>
-
-<script src="script.js"></script>
 </body>
 </html>

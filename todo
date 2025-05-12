@@ -2,3 +2,5 @@ inversao de controle: spring é um grande map de beans, ele resolve o problema d
 não usar metodos static
 controller é burro, delega tudo (service, repository)
 xml papapa
+objeto dto
+data jdbc mais baixo nível que hybernate (data jpa)

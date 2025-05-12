@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS cadastros (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(250) NOT NULL,
+    idade INT NOT NULL,
+    data_inicio DATE NOT NULL
+    );

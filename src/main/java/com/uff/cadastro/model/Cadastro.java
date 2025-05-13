@@ -3,7 +3,7 @@ package com.uff.cadastro.model;
 import java.time.LocalDate;
 
 public class Cadastro {
-    private long id;
+    private Long id;
     private String nome;
     private int idade;
     private LocalDate dataInicio;

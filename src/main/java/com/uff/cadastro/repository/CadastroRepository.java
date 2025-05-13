@@ -3,6 +3,7 @@ package com.uff.cadastro.repository;
 import com.uff.cadastro.model.Cadastro;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public class CadastroRepository {
@@ -12,6 +13,7 @@ public class CadastroRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Transactional
     public void save(Cadastro cadastro) {
         String sql = "INSERT INTO cadastros (nome, idade, data_inicio) VALUES (?,?,?)";
         jdbcTemplate.update(

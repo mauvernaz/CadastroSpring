@@ -5,6 +5,8 @@ xml papapa
 objeto dto
 data jdbc mais baixo nível que hybernate (data jpa)
 
-ajeitar redirecionamento pra confirmacao
-configurar banco de dados
+ajeitar redirecionamento pra confirmacao //check
+configurar banco de dados //check
+
 modelview (objeto pra injetar valores num template) (dto)
+-uma página para editar cadastro

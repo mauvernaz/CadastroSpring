@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Pessoas</title>
+</head>
+<body>
+<h1>Pessoas Cadastradas</h1>
+<a th:href="@{/pessoa/new}">Nova Pessoa</a>
+<table>
+    <tr th:each="pessoa : ${pessoas}">
+        <td th:text="${pessoa.id}"></td>
+        <td th:text="${pessoa.nome}"></td>
+        <td>
+            <a th:href="@{/pessoa/{id}(id=${pessoa.id})}">Ver</a>
+            <a th:href="@{/pessoa/{id}/edit(id=${pessoa.id})}">Editar</a>
+            <form th:action="@{/pessoa/{id}/delete(id=${pessoa.id})}" method="post">
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

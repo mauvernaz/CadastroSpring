@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalhes da Pessoa</title>
+</head>
+<body>
+<h1>Detalhes da Pessoa</h1>
+
+<div>
+    <strong>ID:</strong>
+    <span th:text="${pessoa.id}"></span>
+</div>
+<div>
+    <strong>Nome:</strong>
+    <span th:text="${pessoa.nome}"></span>
+</div>
+<div>
+    <strong>Idade:</strong>
+    <span th:text="${pessoa.idade}"></span>
+</div>
+<div>
+    <strong>Data de Início:</strong>
+    <span th:text="${pessoa.dataInicio}"></span>
+</div>
+
+<a th:href="@{/pessoa/{id}/edit(id=${pessoa.id})}">Editar</a> |
+<a th:href="@{/pessoa}">Voltar para lista</a>
+</body>
+</html>

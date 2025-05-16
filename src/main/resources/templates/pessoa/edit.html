@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Pessoa</title>
+</head>
+<body>
+<h1>Editar Pessoa</h1>
+
+<form th:action="@{/pessoa/{id}(id=${pessoa.id})}" method="post">
+    <input type="hidden" name="_method" value="put">
+
+    <div>
+        <label>Nome:</label>
+        <input type="text" name="nome" th:value="${pessoa.nome}" required>
+    </div>
+    <div>
+        <label>Idade:</label>
+        <input type="number" name="idade" th:value="${pessoa.idade}" required>
+    </div>
+    <div>
+        <label>Data de Início:</label>
+        <input type="date" name="dataInicio" th:value="${pessoa.dataInicio}" required>
+    </div>
+    <button type="submit">Atualizar</button>
+</form>
+
+<a th:href="@{/pessoa}">Voltar para lista</a>
+</body>
+</html>

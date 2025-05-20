@@ -28,7 +28,7 @@ class CadastroServiceTest {
         cadastroValido.setIdade(31);
         cadastroValido.setDataInicio(LocalDate.now());
 
-        when(cadastroRepository.save(any(Cadastro.class))).thenReturn(cadastroValido);
+        //when(cadastroRepository.save(any(Cadastro.class))).thenReturn(cadastroValido);
 
         Cadastro resultado = cadastroService.save(cadastroValido);
 
@@ -42,10 +42,55 @@ class CadastroServiceTest {
     void deveLancarExcecaoQuandoSalvarCadastroInvalido() {
         Cadastro cadastroInvalido = new Cadastro();
 
-        when(cadastroRepository.save(any())).thenThrow(new IllegalArgumentException("Dados Inválidos."));
+        //when(cadastroRepository.save(any())).thenThrow(new IllegalArgumentException("Dados Inválidos."));
 
         assertThrows(IllegalArgumentException.class, () -> {
             cadastroService.save(cadastroInvalido);
         }, "Deveria lançar exceção para cadastro inválido");
 }
+
+    @Test
+    void deveLancarExcecaoQuandoIdadeInsuficiente() {
+        Cadastro cadastroIdadeInvalida = new Cadastro();
+        cadastroIdadeInvalida.setIdade(16);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.save(cadastroIdadeInvalida);
+        }, "Deveria lançar exceção para idade insuficiente (menor que 17).");
+
+    }
+
+    @Test
+    void deveLancarExcecaoQuandoIdadeDescomedida() {
+        Cadastro cadastroIdadeInvalida = new Cadastro();
+        cadastroIdadeInvalida.setIdade(101);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.save(cadastroIdadeInvalida);
+        }, "Deveria lançar exceção para idade descomedida (maior que 100).");
+
+    }
+
+    @Test
+    void deveLancarExcecaoQuandoNomeNulo(){
+        Cadastro cadastroNomeNulo = new Cadastro();
+        cadastroNomeNulo.setNome("");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.save(cadastroNomeNulo);
+        }, "Deveria lançar exceção para nome nulo.");
+    }
+
+    @Test
+    void deveLancarExcecaoQuandoDataImpossivel(){
+        Cadastro cadastroDataImpossivel = new Cadastro();
+        cadastroDataImpossivel.setDataInicio(LocalDate.now().plusDays(1));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.save(cadastroDataImpossivel);
+        }, "Deveria lançar exceção para data inicial impossível.");
+    }
+
+
+
 }

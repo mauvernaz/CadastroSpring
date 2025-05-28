@@ -28,6 +28,9 @@ public class CadastroService {
     }
 
     public Cadastro findById(Long id) {
+        if (id == null || id <= 0) {
+            throw new IllegalArgumentException("Este ID não existe.");
+        }
         return cadastroRepository.findById(id);
     }
 

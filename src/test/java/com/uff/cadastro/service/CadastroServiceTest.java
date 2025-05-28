@@ -2,12 +2,14 @@ package com.uff.cadastro.service;
 
 import com.uff.cadastro.model.Cadastro;
 import com.uff.cadastro.repository.CadastroRepository;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -20,6 +22,8 @@ class CadastroServiceTest {
 
     @InjectMocks
     CadastroService cadastroService;
+
+    //testes pra save
 
     @Test
     void deveSalvarCadastroQuandoDadosValidos() {
@@ -81,6 +85,7 @@ class CadastroServiceTest {
         }, "Deveria lançar exceção para nome nulo.");
     }
 
+    //error
     @Test
     void deveLancarExcecaoQuandoDataImpossivel(){
         Cadastro cadastroDataImpossivel = new Cadastro();
@@ -91,6 +96,46 @@ class CadastroServiceTest {
         }, "Deveria lançar exceção para data inicial impossível.");
     }
 
+    //testes pra findById
 
+    @Test
+    void deveLancarExcecaoQuandoIdImpossivel(){
+        Cadastro cadastroIdImpossivel = new Cadastro();
+        cadastroIdImpossivel.setId(-1);
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.findById(cadastroIdImpossivel.getId());
+        }, "Deveria lançar exceção para ID impossível.");
+    }
+
+    @Test
+    void deveLancarExcecaoQuandoIdErrado(){
+        Cadastro cadastroIdErrado = new Cadastro();
+        long idAlvo = 1L;
+        cadastroIdErrado.setId(idAlvo);
+        cadastroIdErrado.setNome("Teste");
+
+        when(cadastroRepository.findById(idAlvo)).thenReturn(cadastroIdErrado);
+
+        Cadastro resultado = cadastroService.findById(idAlvo);
+
+        assertNotNull(resultado);
+        assertEquals(idAlvo, resultado.getId());
+        verify(cadastroRepository).findById(idAlvo);
+    }
+
+//    @Test
+//    void deveLancarExcecaoQuandoIdInexistente(){
+//        Cadastro cadastroIdInexistente = new Cadastro();
+//        cadastroIdInexistente.setId(999);
+//
+//        assert
+//    }
+
+    //testes pra update
+
+
+
+    //testes pra findAll
 
 }

@@ -12,3 +12,6 @@ modelview (objeto pra injetar valores num template) (dto)
 -uma página para editar cadastro
 -hash (basicamente convenção de url.)
 -get/new: index.html; post: redirect:pag listar; get listar; botão edit (PUT.html/UPDATE.sql)
+
+testes
+-resolver teste data

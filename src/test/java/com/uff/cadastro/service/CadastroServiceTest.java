@@ -124,13 +124,14 @@ class CadastroServiceTest {
         verify(cadastroRepository).findById(idAlvo);
     }
 
-//    @Test
-//    void deveLancarExcecaoQuandoIdInexistente(){
-//        Cadastro cadastroIdInexistente = new Cadastro();
-//        cadastroIdInexistente.setId(999);
-//
-//        assert
-//    }
+    @Test
+    void deveLancarExcecaoQuandoIdNulo(){
+        Cadastro cadastroIdNulo = new Cadastro();
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            cadastroService.save(cadastroIdNulo);
+        }, "Deveria lançar exceção para ID nulo.");
+    }
 
     //testes pra update
 
